@@ -13,7 +13,6 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  ConnectionStrings.DefaultConnection: $(ConnectionStrings--Database)
 
 steps:
 - task: NuGetToolInstaller@1
