@@ -20,28 +20,7 @@ steps:
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
-
-
-- task: AzureKeyVault@1
-  inputs:
-    azureSubscription: 'Pay-As-You-Go (b3b1f4ce-fc82-4a67-90ff-ae5b24ee38db)'
-    KeyVaultName: 'mykeyvaulttest11'
-    SecretsFilter: '*'
-    RunAsPreJob: false
-- task: azurekeyvaultactions@2
-  inputs:
-    ConnectedServiceName: 'Pay-As-You-Go (b3b1f4ce-fc82-4a67-90ff-ae5b24ee38db)'
-    Action: 'GetSecret'
-    KeyVaultName: 'mykeyvaulttest11'
-    SecretName: 'DefaultConnection'
-    VariableName: 'DefaultConnection'
-- task: CmdLine@2
-  inputs:
-    script: |
-      echo $DefaultConnection
-      
-      echo Hello world
-  
+ 
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
