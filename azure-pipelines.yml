@@ -14,20 +14,18 @@ variables:
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
-- task: AzureKeyVault@1
-  inputs:
-    azureSubscription: 'Pay-As-You-Go (b3b1f4ce-fc82-4a67-90ff-ae5b24ee38db)'
-    KeyVaultName: 'mykeyvaulttest11'
-    SecretsFilter: '*'
-    RunAsPreJob: false
-    
 steps:
 - task: NuGetToolInstaller@1
 
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
-
+- task: AzureKeyVault@1
+  inputs:
+    azureSubscription: 'Pay-As-You-Go (b3b1f4ce-fc82-4a67-90ff-ae5b24ee38db)'
+    KeyVaultName: 'mykeyvaulttest11'
+    SecretsFilter: '*'
+    RunAsPreJob: false
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
